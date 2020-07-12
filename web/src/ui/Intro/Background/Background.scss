@@ -1,0 +1,75 @@
+.background-wrapper-login {
+  height: 100%;
+  transform: translateY(-100px);
+  top: 0;
+  //max-height: 950px;
+
+  .background-image {
+    height: 100%;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(50%);
+    }
+  }
+}
+
+.background-wrapper {
+  transform: translateY(-100px);
+  top: 0;
+  height: 672.594px;
+  border-bottom: 8px solid #222;
+
+  h1,
+  h3 {
+    color: white;
+  }
+
+  .background-image {
+    height: 100%;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(50%);
+    }
+  }
+  .background-text-top {
+    position: relative;
+    top: -450px;
+
+    width: 640px;
+    margin: 0 auto;
+    text-align: center;
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 15px;
+    }
+  }
+  .try-now-form {
+    position: relative;
+    top: -450px;
+    color: white;
+    width: 1000px;
+    margin: 0 auto;
+
+    .ant-form-item-has-error .ant-form-item-explain {
+      color: #e87c03;
+      margin-top: 3px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+  }
+  .background-text-bottom {
+    position: relative;
+    top: -465px;
+    text-align: center;
+
+    h6 {
+      color: white;
+      font-size: 18px;
+    }
+  }
+}

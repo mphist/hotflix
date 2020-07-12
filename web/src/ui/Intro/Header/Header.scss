@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/bootstrap";
+
+.header-wrapper {
+  z-index: 10;
+  position: relative;
+  padding: 21px;
+  display: flex;
+
+  .logo {
+    margin-left: 50px;
+  }
+
+  .btn-primary {
+    background-color: red;
+    border-color: red;
+    position: absolute;
+    top: 30px;
+    right: 70px;
+    padding: 5px 15px;
+  }
+  .btn-primary:focus:active {
+    background-color: red;
+    border-color: red;
+    box-shadow: none;
+    outline: none;
+  }
+  .btn-primary:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}

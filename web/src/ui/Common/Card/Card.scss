@@ -1,0 +1,109 @@
+.contents-card-wrapper {
+  position: relative;
+  top: -320px;
+  z-index: 2;
+  margin-bottom: 60px;
+
+  .trending-card-row {
+    .card-text {
+      margin-bottom: 10px;
+      margin-left: 35px;
+      h3 {
+        color: white;
+      }
+    }
+    .card-images {
+      //height: 300px;
+
+      width: 1840px;
+      margin: 0 auto;
+
+      .slick-slider,
+      .slick-initialized,
+      .slick-list,
+      .slick-track {
+        div {
+          //width: 100%;
+          .add-to-list-btn {
+            display: none;
+            .add-btn {
+              width: 30px;
+              position: relative;
+              left: 250px;
+              top: -438px;
+            }
+          }
+
+          .image {
+            //height: 100%;
+            //padding: 0 5px;
+            width: 98%;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .slick-slide:hover {
+        .image {
+          filter: brightness(50%);
+        }
+
+        .add-to-list-btn {
+          display: inline;
+          .add-text-container {
+            display: none;
+          }
+          .add-btn {
+            cursor: pointer;
+
+            &:hover {
+              width: 33px;
+            }
+          }
+
+          &:hover {
+            .add-text-container {
+              display: block;
+              width: 150px;
+              color: black;
+              text-align: center;
+              background-color: white;
+              font-size: 15px;
+              font-weight: bold;
+              padding: 1px;
+              position: relative;
+              top: -370px;
+              left: 140px;
+            }
+          }
+        }
+
+        /*  .add-to-list-btn {
+          .add-btn {
+            visibility: hidden;
+            width: 30px;
+            position: relative;
+            left: 250px;
+            top: -438px;
+
+            &:hover {
+              width: 33px
+            }
+          }
+        }
+
+        .add-btn {
+          visibility: visible;
+          cursor: pointer;
+
+          &:hover {
+            width: 33px;
+          }
+        } */
+      }
+    }
+  }
+}
