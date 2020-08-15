@@ -1,31 +1,69 @@
 @import "~bootstrap/scss/bootstrap";
 
 .header-wrapper {
-  z-index: 10;
-  position: relative;
-  padding: 21px;
   display: flex;
+  justify-content: space-between;
+  padding: 21px;
 
-  .logo {
-    margin-left: 50px;
+  .logo-container {
+    z-index: 1;
+    .logo {
+      margin-left: 50px;
+    }
   }
 
-  .btn-primary {
-    background-color: red;
-    border-color: red;
-    position: absolute;
-    top: 30px;
-    right: 70px;
-    padding: 5px 15px;
+  .login-btn {
+    z-index: 1;
+    margin: auto 35px;
+
+    .btn-primary {
+      background-color: red;
+      border-color: red;
+      width: 80px;
+      padding: 3px 10px;
+    }
+    .btn-primary:focus:active {
+      background-color: red;
+      border-color: red;
+      box-shadow: none;
+      outline: none;
+    }
+    .btn-primary:focus {
+      box-shadow: none;
+      outline: none;
+    }
   }
-  .btn-primary:focus:active {
-    background-color: red;
-    border-color: red;
-    box-shadow: none;
-    outline: none;
+}
+
+@media screen and (max-width: 568px) {
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    .logo-container {
+      .logo {
+        width: 100px;
+        margin: 0;
+      }
+    }
+    .login-btn {
+      margin: auto 0;
+      button {
+        padding: 3px 5px;
+      }
+    }
   }
-  .btn-primary:focus {
-    box-shadow: none;
-    outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .header-wrapper {
+    .logo-container {
+      margin-left: 15px;
+      .logo {
+        margin-left: 0;
+      }
+    }
+    .login-btn {
+      margin: auto 24px;
+    }
   }
 }

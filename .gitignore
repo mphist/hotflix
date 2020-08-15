@@ -2,3 +2,7 @@
 /web/node_modules
 /server/node_modules
 /server/env
+/server/build
+/web/.env.development
+deploy.sh
+Dockerfile

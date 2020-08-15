@@ -1,7 +1,26 @@
 .main {
   background-color: black;
+  min-width: 320px;
 
   .test-wrapper {
     border: 3px solid red;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 349px) {
+  .main {
+    min-width: 320px;
+  }
+}
+
+@media screen and (min-max: 350px) {
+  .main {
+    min-width: 350px;
   }
 }

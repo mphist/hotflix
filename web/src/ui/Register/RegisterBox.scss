@@ -1,0 +1,149 @@
+.register-box {
+  position: relative;
+  top: -970px;
+  margin: 0 auto;
+  width: 450px;
+  height: 660px;
+  background-color: rgba(0, 0, 0, 0.75);
+
+  .register-header {
+    width: 50%;
+    margin-left: 65px;
+    position: relative;
+    top: 50px;
+
+    .register-text {
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+
+  .register-form {
+    position: relative;
+    top: 65px;
+
+    .ant-row {
+      width: 350px;
+      margin: 0 auto;
+      padding: 9px 15px;
+    }
+
+    .ant-form-item-has-error {
+      .email-phone-input,
+      .password-input-1,
+      .password-input-2 {
+        padding: 10px 20px;
+        font-size: 16px;
+        background: #333;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+
+        border-bottom: solid 2px #e87c03;
+      }
+
+      .ant-form-item-explain {
+        color: #e87c03;
+      }
+    }
+
+    .email-phone-input,
+    .password-input-1,
+    .password-input-2 {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #333;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+
+      &:focus {
+        filter: brightness(130%);
+      }
+
+      &:focus::placeholder {
+        font-size: 11px;
+        transform: translateY(-14px);
+      }
+
+      .ant-input-password-icon {
+        color: #8c8c8c;
+      }
+
+      .ant-input {
+        background: none;
+        color: #fff;
+        &:focus::placeholder {
+          font-size: 11px;
+          transform: translateY(-10px);
+        }
+      }
+    }
+
+    .ant-input-suffix {
+      display: none;
+    }
+
+    .ant-input-affix-wrapper-focused {
+      filter: brightness(130%);
+
+      .ant-input-suffix {
+        display: flex;
+      }
+    }
+
+    .password-visibility-btn {
+      /* position: absolute;
+      top: 110px;
+      left: 324px; */
+      border: none;
+      background: #333;
+      color: #8c8c8c;
+      filter: brightness(130%);
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .register-form-button {
+      background-color: #e50914;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      width: 320px;
+      height: 50px;
+    }
+
+    .register-form-help {
+      margin: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #b3b3b3;
+
+      .rememberMe-label {
+        transform: translate3d(-68px, -4px, 0);
+      }
+      .register-remember-me-text {
+        margin: auto 3px;
+      }
+      .need-help-link {
+        color: #b3b3b3;
+        font-size: 14px;
+        transform: translateY(-4px);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .register-box {
+    top: -1300px;
+  }
+}

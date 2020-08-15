@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { API_KEY } from "../env";
+import { API_KEY } from "../../../env";
 
 const DISCOVER_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1`;
 const TRENDING_URL = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`;
@@ -9,6 +9,7 @@ const MOVIES_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY
 const NEW_MOVIES_URL = `
 https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`;
 const TV_GENRE_URL = `https://api.themoviedb.org/3/tv`;
+const GET_MOVIES_URL = `https://api.themoviedb.org/3/movie`;
 
 export const discover = async (id) =>
   await fetch(DISCOVER_URL + `&with_genres=${id}`).then((res) => res.json());
@@ -34,3 +35,13 @@ export const tv_genre = async (id) =>
       `/${id}` +
       `/similar?api_key=${API_KEY}&language=en-US&page=1`
   ).then((res) => res.json());
+
+export const get_movies = async (id) => {
+  return await fetch(
+    GET_MOVIES_URL + `/${id}` + `?api_key=${API_KEY}&language=en-US`
+  ).then((res) => res.json());
+  //const result = response.json();
+  /* const movie = [{ id: result.id, title: result.title }];
+  console.log("movie fetched", movie); */
+  //return response;
+};

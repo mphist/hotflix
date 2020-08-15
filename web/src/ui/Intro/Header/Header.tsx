@@ -11,16 +11,22 @@ const Header = ({ login }: PropTypes) => {
   if (login) {
     return (
       <div className="header-wrapper">
-        <img className="logo" src={process.env.PUBLIC_URL + "/hotflix.png"} />
-        <Link to="/login">
-          <Button variant="primary">Sign In</Button>
-        </Link>
+        <div className="logo-container">
+          <img className="logo" src={process.env.PUBLIC_URL + "/hotflix.png"} />
+        </div>
+        <div className="login-btn">
+          <Link to="/login">
+            <Button variant="primary">Sign In</Button>
+          </Link>
+        </div>
       </div>
     );
   } else {
     return (
       <div className="header-wrapper">
-        <img className="logo" src={process.env.PUBLIC_URL + "/hotflix.png"} />
+        <div className="logo-container">
+          <img className="logo" src={process.env.PUBLIC_URL + "/hotflix.png"} />
+        </div>
       </div>
     );
   }

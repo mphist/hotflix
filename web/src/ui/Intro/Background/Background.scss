@@ -38,8 +38,7 @@
   .background-text-top {
     position: relative;
     top: -450px;
-
-    width: 640px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 
@@ -52,7 +51,7 @@
     position: relative;
     top: -450px;
     color: white;
-    width: 1000px;
+    width: 90%;
     margin: 0 auto;
 
     .ant-form-item-has-error .ant-form-item-explain {
@@ -64,12 +63,388 @@
   }
   .background-text-bottom {
     position: relative;
-    top: -465px;
     text-align: center;
-
+    margin: 0 auto;
     h6 {
       color: white;
       font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .background-wrapper {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 349px) {
+  .background-wrapper {
+    width: 100%;
+    height: 480px;
+    min-width: 290px;
+    .background-text-top {
+      top: -348px;
+      width: 100%;
+
+      h1 {
+        font-size: 1.75rem;
+      }
+      h3 {
+        font-size: 1.125rem;
+      }
+    }
+    .background-text-bottom {
+      text-align: center;
+      margin: 0 auto;
+      top: -340px;
+      h6 {
+        font-size: 18px;
+      }
+    }
+    .try-now-form {
+      top: -360px;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .ant-row
+          .ant-form-item-
+          .ant-form-item-has-success
+          .ant-form-item-with-help
+          .ant-form-item-has-error {
+          width: 100%;
+        }
+
+        .ant-form-item-control-input-content {
+          width: 320px;
+          text-align: center;
+          input {
+            width: 280px;
+            height: 40px;
+          }
+          button {
+            width: 170px;
+            height: 40px;
+            font-size: 20px;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 350px) {
+  .background-wrapper {
+    height: 525px;
+    .background-text-top {
+      top: -358px;
+      width: 100%;
+      h1 {
+        font-size: 30px;
+      }
+      h3 {
+        font-size: 18px;
+      }
+    }
+    .background-text-bottom {
+      position: relative;
+      margin: 0 auto;
+      text-align: center;
+      h6 {
+        font-size: 18px;
+      }
+    }
+    .try-now-form {
+      min-width: 330px;
+      top: -315px;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .ant-row
+          .ant-form-item-
+          .ant-form-item-has-success
+          .ant-form-item-with-help
+          .ant-form-item-has-error {
+          width: 100%;
+        }
+
+        .ant-form-item-control-input-content {
+          //width: 320px;
+          text-align: center;
+          input {
+            width: 100%;
+            height: 40px;
+          }
+          button {
+            width: 170px;
+            height: 40px;
+            font-size: 18px;
+            padding: 0;
+            position: relative;
+            top: -10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 533px) {
+  .background-wrapper {
+    height: 700px;
+
+    .background-text-top {
+      width: 80%;
+      top: -492px;
+      min-width: 471px;
+
+      h1 {
+        font-size: 50px;
+      }
+      h3 {
+        font-size: 25px;
+      }
+    }
+
+    .background-text-bottom {
+      position: relative;
+      top: -475px;
+      margin: 0 auto;
+      text-align: center;
+      //max-width: 600px;
+      h6 {
+        font-size: 25px;
+      }
+    }
+    .try-now-form {
+      max-width: 500px;
+      top: -490px;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .ant-row
+          .ant-form-item-
+          .ant-form-item-has-success
+          .ant-form-item-with-help
+          .ant-form-item-has-error {
+          width: 100%;
+        }
+
+        .ant-form-item-control-input-content {
+          //width: 320px;
+          text-align: center;
+          input {
+            width: 100%;
+            height: 40px;
+            max-width: 500px;
+          }
+          button {
+            width: 170px;
+            height: 40px;
+            font-size: 18px;
+            padding: 0;
+            position: relative;
+            top: -10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 590px) and (min-width: 350px) {
+  .background-wrapper {
+    height: 470px;
+
+    .background-text-top {
+      width: 80%;
+      top: -340px;
+      min-width: 300px;
+      h1 {
+        font-size: 1.75rem;
+      }
+      h3 {
+        font-size: 1.125rem;
+      }
+    }
+
+    .background-text-bottom {
+      position: relative;
+      top: -340px;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 340px;
+      h6 {
+        font-size: 1.125rem;
+      }
+    }
+    .try-now-form {
+      max-width: 500px;
+      top: -360px;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .ant-row
+          .ant-form-item-
+          .ant-form-item-has-success
+          .ant-form-item-with-help
+          .ant-form-item-has-error {
+          width: 100%;
+        }
+
+        .ant-form-item-control-input-content {
+          //width: 320px;
+          text-align: center;
+          input {
+            width: 100%;
+            height: 40px;
+            max-width: 500px;
+          }
+          button {
+            width: 170px;
+            height: 40px;
+            font-size: 18px;
+            padding: 0;
+            position: relative;
+            top: -10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 591px) {
+  .background-wrapper {
+    height: 700px;
+
+    .background-text-top {
+      width: 80%;
+      top: -492px;
+
+      h1 {
+        font-size: 50px;
+      }
+      h3 {
+        font-size: 25px;
+      }
+    }
+
+    .background-text-bottom {
+      position: relative;
+      top: -475px;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 590px;
+      h6 {
+        font-size: 25px;
+      }
+    }
+    .try-now-form {
+      max-width: 500px;
+      top: -490px;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .ant-row
+          .ant-form-item-
+          .ant-form-item-has-success
+          .ant-form-item-with-help
+          .ant-form-item-has-error {
+          width: 100%;
+        }
+
+        .ant-form-item-control-input-content {
+          //width: 320px;
+          text-align: center;
+          input {
+            width: 100%;
+            height: 40px;
+            max-width: 500px;
+          }
+          button {
+            width: 170px;
+            height: 40px;
+            font-size: 18px;
+            padding: 0;
+            position: relative;
+            top: -10px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width: 930px) {
+  .background-wrapper {
+    height: 700px;
+
+    .background-text-top {
+      width: 60%;
+      top: -492px;
+      h1 {
+        font-size: 50px;
+      }
+      h3 {
+        font-size: 25px;
+      }
+    }
+
+    .background-text-bottom {
+      position: relative;
+      top: -475px;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      max-width: 100%;
+      h6 {
+        font-size: 20px;
+      }
+    }
+    .try-now-form {
+      max-width: 80%;
+      top: -490px;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .ant-input.register-input {
+          width: 450px;
+          height: 100%;
+        }
+
+        .ant-row.ant-form-item {
+          button {
+            top: 0;
+            width: 100%;
+            padding: 8px 20px;
+            height: 100%;
+            margin: 1px;
+            span {
+              font-size: 30px;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -1,5 +1,4 @@
-.content-header-wrapper,
-.offset {
+.content-header-wrapper {
   background-color: transparent;
   color: white;
   height: 68px;
@@ -13,7 +12,7 @@
   .logo {
     width: 100px;
     height: 35px;
-    margin-left: 55px;
+    margin-left: 30px;
     margin-right: 35px;
     cursor: pointer;
 
@@ -43,23 +42,70 @@
       cursor: pointer;
     }
 
-    .avatar-container {
-      display: flex;
-      align-items: center;
-      transform: translateX(25px);
-      cursor: pointer;
+    .avatar-wrapper {
+      width: 0px;
 
-      img {
-        width: 35px;
+      &:hover {
+        width: 100px;
+        .drop-down {
+          visibility: visible;
+        }
       }
 
-      .caret {
-        margin-left: 10px;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 5px 5px 0 5px;
-        border-color: #fff transparent transparent transparent;
+      .drop-down {
+        visibility: hidden;
+        border-top: 1px solid #222;
+        border-bottom: 1px solid #222;
+        border-left: 2px solid #222;
+        border-right: 2px solid #222;
+        background-color: #000;
+        color: #fff;
+        width: 180px;
+        position: relative;
+        top: 105px;
+        right: 100px;
+
+        .caret-2 {
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 7px 7px 7px;
+          border-color: transparent transparent #fff transparent;
+          position: absolute;
+          top: -10px;
+          right: 28px;
+        }
+
+        li {
+          text-decoration: none;
+          display: block;
+          padding: 2px 10px;
+
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .avatar-container {
+        display: flex;
+        align-items: center;
+        transform: translate(25px, 85px);
+        cursor: pointer;
+
+        img {
+          width: 35px;
+        }
+
+        .caret-1 {
+          margin-left: 10px;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 5px 5px 0 5px;
+          border-color: #fff transparent transparent transparent;
+        }
       }
     }
   }
