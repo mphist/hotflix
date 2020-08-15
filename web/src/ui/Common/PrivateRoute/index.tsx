@@ -14,7 +14,11 @@ export const PrivateRoute = ({ children, ...rest }: PrivateRouteProps) => {
   const user = sessionStorage.getItem("user");
 
   if (email || user) {
-    if (rest.path === "/login" || rest.path === "/") {
+    if (
+      rest.path === "/login" ||
+      rest.path === "/" ||
+      rest.path === "/register"
+    ) {
       history.push("/browse");
       return (
         <Route>
@@ -28,6 +32,9 @@ export const PrivateRoute = ({ children, ...rest }: PrivateRouteProps) => {
     }
   } else {
     if (rest.path === "/") {
+      return <Route>{children}</Route>;
+    }
+    if (rest.path === "/register") {
       return <Route>{children}</Route>;
     }
     if (rest.path !== "/login") {

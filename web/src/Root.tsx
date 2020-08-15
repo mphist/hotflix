@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, Suspense } from "react";
+import React, { useReducer } from "react";
 import { ApolloProvider } from "@apollo/react-hooks";
 import client from "./ui/Common/Card";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -9,8 +9,7 @@ import Register from "./ui/Register";
 import { PrivateRoute } from "./ui/Common/PrivateRoute";
 import { AuthContext } from "./ui/Common/Context/auth";
 import MyList from "./ui/MyList";
-import { reducer, initialState, login as loginFunc } from "./context";
-import axios from "axios";
+import { reducer, initialState } from "./context";
 
 const Root = () => {
   const [{ email }, dispatch] = useReducer(reducer, initialState);
