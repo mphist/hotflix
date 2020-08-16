@@ -4,7 +4,6 @@ import { MyList } from "../entity/MyList";
 
 export const createTypeOrmConn = async () => {
   const connectionOptions = await getConnectionOptions(process.env.NODE_ENV);
-  console.log("db url", process.env.DATABASE_URL);
   return process.env.NODE_ENV === "production"
     ? createConnection({
         ...connectionOptions,

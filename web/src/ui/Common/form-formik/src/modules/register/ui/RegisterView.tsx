@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Button } from "antd";
 import { inputField } from "../../shared/inputField";
 import * as yup from "yup";
 import axios from "axios";
 import { withFormik, Field, Form as FForm, FormikErrors } from "formik";
 import { passwordField } from "../../shared/passwordField";
+import { login } from "../../../../../../../context";
 
 interface FormValues {
   email: string;
@@ -14,6 +15,10 @@ interface FormValues {
 
 interface Props {
   submit: (values: FormValues) => Promise<FormikErrors<FormValues>> | null;
+  dispatch?: React.Dispatch<{
+    type: string;
+    email: string;
+  }>;
 }
 
 const RegisterForm = () => {
@@ -72,12 +77,17 @@ const RegisterForm = () => {
   });
 }); */
 
+const host =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_BACKEND_HOST_PROD
+    : process.env.REACT_APP_BACKEND_HOST_DEV;
+
 yup.addMethod(yup.string, "check_email", function (msg) {
   //@ts-ignore
   return this.test("test-name", msg, async function (value) {
     if (
       (
-        await axios.post(process.env.REACT_APP_BACKEND_HOST + "/check_email", {
+        await axios.post(host + "/check_email", {
           email: value,
         })
       ).data === "email is good to use"
@@ -120,9 +130,13 @@ const RegisterView = withFormik<Props, FormValues>({
 
   handleSubmit: async (values, { props }) => {
     //POST to server /register
-    axios
-      .post(process.env.REACT_APP_BACKEND_HOST + "/register", values)
-      .then((res) => console.log(res));
+    axios.post(host + "/register", values).then((res) => {
+      props.dispatch
+        ? props.dispatch(login(res.data.email))
+        : console.log("dispatch undefined");
+      sessionStorage.setItem("user", res.data.email);
+      window.location.replace("/browse");
+    });
     const errors = await props.submit(values);
     if (errors) {
       console.log("errors", errors);

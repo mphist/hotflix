@@ -22,7 +22,11 @@ window.onscroll = () => {
 const Header = ({ mylist }: Props) => {
   const handleLogout = () => {
     sessionStorage.clear();
-    window.location.replace(process.env.REACT_APP_BACKEND_HOST + "/logout");
+    window.location.replace(
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_BACKEND_HOST_PROD + "/logout"
+        : process.env.REACT_APP_BACKEND_HOST_DEV + "/logout"
+    );
   };
 
   return (

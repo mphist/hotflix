@@ -7,14 +7,17 @@ const MyList: React.FunctionComponent = () => {
 
   useEffect(() => {
     const fetchShows = async () => {
-      const response = await axios.get(
-        process.env.REACT_APP_BACKEND_HOST as string,
-        { withCredentials: true }
-      );
+      const host =
+        process.env.NODE_ENV === "production"
+          ? process.env.REACT_APP_BACKEND_HOST_PROD
+          : process.env.REACT_APP_BACKEND_HOST_DEV;
+      const response = await axios.get(host as string, {
+        withCredentials: true,
+      });
       const { email } = response.data;
       console.log("email", email);
       const response2 = await axios.post(
-        process.env.REACT_APP_BACKEND_HOST + "/get_mylist",
+        host + "/get_mylist",
         { email },
         { withCredentials: true }
       );

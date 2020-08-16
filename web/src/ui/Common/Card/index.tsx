@@ -1,7 +1,10 @@
 import ApolloClient from "apollo-boost";
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_BACKEND_HOST + "/graphql",
+  uri:
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_BACKEND_HOST_PROD + "/graphql"
+      : process.env.REACT_APP_BACKEND_HOST_DEV + "/graphql",
 });
 
 /* client

@@ -19,12 +19,17 @@ interface Props {
   submit: (values: FormValues) => Promise<FormikErrors<FormValues>> | null;
 }
 
+const host =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_BACKEND_HOST_PROD
+    : process.env.REACT_APP_BACKEND_HOST_DEV;
+
 yup.addMethod(yup.string, "check_email", function (msg) {
   //@ts-ignore
   return this.test("test-name", msg, async function (value) {
     if (
       (
-        await axios.post(process.env.REACT_APP_BACKEND_HOST + "/check_email", {
+        await axios.post(host + "/check_email", {
           email: value,
         })
       ).data === "email is good to use"

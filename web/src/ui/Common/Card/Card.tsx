@@ -53,18 +53,20 @@ const Card: FunctionComponent<Props> = (props: Props) => {
     infinite: true,
   };
 
+  const host =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_BACKEND_HOST_PROD
+      : process.env.REACT_APP_BACKEND_HOST_DEV;
+
   const handleAddToList = async (id: number, title: string) => {
     try {
-      const response = await axios.get(
-        process.env.REACT_APP_BACKEND_HOST as string,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get(host as string, {
+        withCredentials: true,
+      });
       const email = response.data.email;
       if (email) {
         const result = await axios.post(
-          process.env.REACT_APP_BACKEND_HOST + "add_to_mylist",
+          host + "/add_to_mylist",
           { id, title, email },
           { withCredentials: true }
         );

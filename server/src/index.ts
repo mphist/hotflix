@@ -26,7 +26,6 @@ const app = express();
 const RedisStore = connectRedis(session);
 const redisConfig =
   process.env.NODE_ENV === "production" ? process.env.REDIS_URL : {};
-console.log("redis url", redisConfig);
 const redis = new Redis(redisConfig);
 startSession(app, redis, RedisStore);
 
@@ -79,10 +78,23 @@ app.post("/register", async (req, res) => {
       }
   }
   `;
-  const { email, password1 } = req.body;
-  const response = await request(host, mutation(email, null, password1));
+  const { email, phone, password1 } = req.body;
+  const response = await request(host, mutation(email, phone, password1));
   if (response) {
     console.log(response.register[0]);
+    const host =
+      process.env.NODE_ENV === "production"
+        ? process.env.BACKEND_HOST_PROD + "/login"
+        : process.env.BACKEND_HOST_DEV + "/login";
+    const response2 = await axios.post(host, {
+      email,
+      phone,
+      password: password1,
+    });
+    const { redirectUrl } = response2.data;
+    if (redirectUrl) {
+      res.status(200).send({ redirectUrl, email: response2.data.email });
+    }
   }
   return res.status(400).send(response.register[0]);
 });
@@ -122,19 +134,20 @@ app.post("/login", async (req, res) => {
 
   if (userId) {
     // login successful
+    console.log("Login successful");
     req.session.userId = userId;
     req.session.email = email;
     //res.redirect("http://localhost:3000/browse"); // cors issue
     return res.send({
       redirectUrl:
         process.env.NODE_ENV === "production"
-          ? process.env.FRONTEND_HOST_PROD
+          ? process.env.FRONTEND_HOST_PROD + "/browse"
           : process.env.FRONTEND_HOST_DEV + "/browse",
       id: userId,
       email,
     });
   }
-  return res.status(200).send("success");
+  return res.status(200).send("login failed");
 });
 
 app.get("/logout", (req, res) => {

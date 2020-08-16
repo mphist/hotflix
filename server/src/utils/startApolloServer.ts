@@ -36,8 +36,6 @@ export const startServer = async (
 
   server.applyMiddleware({ app, cors });
 
-  console.log("PORT", process.env.PORT);
-
   await createTypeOrmConn();
   app.listen(process.env.PORT || 4000, () =>
     console.log(

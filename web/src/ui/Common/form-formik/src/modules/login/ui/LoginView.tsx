@@ -1,13 +1,12 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext } from "react";
 import { Form, Button } from "antd";
 import { inputField } from "../../shared/inputField";
 import * as yup from "yup";
 import axios from "axios";
-import { withFormik, Field, Form as FForm, FormikErrors, Formik } from "formik";
-import { Link, Redirect, Route, useHistory } from "react-router-dom";
+import { Field, Form as FForm, FormikErrors, Formik } from "formik";
+import { Link, useHistory } from "react-router-dom";
 import { passwordField } from "../../shared/passwordField";
 import { AuthContext } from "../../../../../../Common/Context/auth";
-import { reducer, initialState } from "../../../../../../../context/index";
 import { login } from "../../../../../../../context";
 
 interface FormValues {
@@ -48,19 +47,14 @@ const LoginView = ({ submit }: Props) => {
   const history = useHistory();
 
   const handleSubmit = async (values: FormValues) => {
-    console.log(
-      "env",
-      process.env.NODE_ENV,
-      process.env.REACT_APP_BACKEND_HOST
-    );
+    const host =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_BACKEND_HOST_PROD
+        : process.env.REACT_APP_BACKEND_HOST_DEV;
     try {
-      const response = await axios.post(
-        process.env.REACT_APP_BACKEND_HOST + "/login",
-        values,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post(host + "/login", values, {
+        withCredentials: true,
+      });
       console.log("checking response", response.data);
 
       const { redirectUrl, id, email } = response.data;
@@ -101,6 +95,10 @@ const LoginView = ({ submit }: Props) => {
         alert(
           "Oops... Looks like our server is down. We will be right with you."
         );
+      } else if (
+        err.message === "Cannot set property 'className' of undefined"
+      ) {
+        return;
       } else {
         console.log("error", err);
         alert("Something went wrong. We are looking into it~~");
@@ -161,16 +159,5 @@ const LoginView = ({ submit }: Props) => {
     </Formik>
   );
 };
-
-const LoginViewToWrap = withFormik<Props, FormValues>({
-  mapPropsToValues: () => ({
-    email: "",
-    password: "",
-  }),
-
-  handleSubmit: async (values, { props }) => {
-    //POST to server /login
-  },
-})(LoginView);
 
 export default LoginView;
