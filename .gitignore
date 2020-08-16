@@ -3,6 +3,7 @@
 /server/node_modules
 /server/env
 /server/build
+/web/build
 /web/.env
 deploy.sh
 Dockerfile
