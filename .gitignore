@@ -3,6 +3,9 @@
 /server/node_modules
 /server/env
 /server/build
-/web/.env.development
+/web/.env
 deploy.sh
 Dockerfile
+/web/.netlify
+# Local Netlify folder
+.netlify
