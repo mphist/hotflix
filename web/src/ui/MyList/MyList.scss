@@ -10,13 +10,14 @@
     .show-list {
       display: flex;
       width: 100%;
-
+      max-width: 100%;
+      flex-wrap: wrap;
       .show-container {
         width: 200px;
         margin: 5px;
 
         img {
-          width: 100%;
+          max-width: 200px;
         }
       }
     }
