@@ -130,13 +130,15 @@ const RegisterView = withFormik<Props, FormValues>({
 
   handleSubmit: async (values, { props }) => {
     //POST to server /register
-    axios.post(host + "/register", values).then((res) => {
-      props.dispatch
-        ? props.dispatch(login(res.data.email))
-        : console.log("dispatch undefined");
-      sessionStorage.setItem("user", res.data.email);
-      window.location.replace("/browse");
-    });
+    axios
+      .post(host + "/register", values, { withCredentials: true })
+      .then((res) => {
+        props.dispatch
+          ? props.dispatch(login(res.data.email))
+          : console.log("dispatch undefined");
+        sessionStorage.setItem("user", res.data.email);
+        window.location.replace("/browse");
+      });
     const errors = await props.submit(values);
     if (errors) {
       console.log("errors", errors);

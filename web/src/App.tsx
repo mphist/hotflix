@@ -29,8 +29,8 @@ const App: React.FunctionComponent = () => {
     <div className="main">
       <Header login />
       <Background login />
-      {cards.map((card) => (
-        <Card {...card} />
+      {cards.map((card, key) => (
+        <Card key={key} {...card} />
       ))}
     </div>
   );

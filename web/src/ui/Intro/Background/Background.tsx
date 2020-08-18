@@ -15,6 +15,7 @@ const Background: React.FunctionComponent<PropTypes> = ({ login }) => {
           <img
             src={process.env.PUBLIC_URL + "/popsignupwowweeks.jpg"}
             draggable={false}
+            alt="background"
           />
         </div>
         <div className="background-text-top">
@@ -38,6 +39,7 @@ const Background: React.FunctionComponent<PropTypes> = ({ login }) => {
           <img
             src={process.env.PUBLIC_URL + "/popsignupwowweeks.jpg"}
             draggable={false}
+            alt="background"
           />
         </div>
       </div>

@@ -18,5 +18,5 @@ export class MyList extends BaseEntity {
   show_id: number;
 
   @Column("varchar")
-  show_name: string;
+  show_title: string;
 }

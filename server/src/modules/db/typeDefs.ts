@@ -10,7 +10,7 @@ export const typeDefs = gql`
   type Mutation {
     register(email: String, phone: String, password: String!): [RegisterStatus!]
     login(email: String, phone: String, password: String!): [LoginStatus!]
-    add_to_mylist(email: String, show_id: Int, show_name: String): MyList!
+    add_to_mylist(email: String, show_id: Int, show_title: String): MyList!
   }
 
   type RegisterStatus {
@@ -46,8 +46,10 @@ export const typeDefs = gql`
   }
 
   type Show {
-    show_id: Int
-    show_name: String
+    id: Int
+    title: String
+    original_name: String
+    original_title: String
     poster_path: String
   }
 `;

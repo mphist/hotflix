@@ -43,7 +43,7 @@ const LoginView = ({ submit }: Props) => {
   }
 
   //const [user, dispatch] = useReducer(reducer, initialState);
-  const { email, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const history = useHistory();
 
   const handleSubmit = async (values: FormValues) => {
@@ -57,7 +57,7 @@ const LoginView = ({ submit }: Props) => {
       });
       console.log("checking response", response.data);
 
-      const { redirectUrl, id, email } = response.data;
+      const { redirectUrl, email } = response.data;
       // login successful
       if (redirectUrl) {
         console.log("login successful");

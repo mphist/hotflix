@@ -35,7 +35,13 @@ export const register = async (_, args, { url }) => {
   await user.save();
 
   const userId = user.id;
-  const link = await createConfirmEmailLink(userId, url, new Redis());
+  const redisConfig =
+    process.env.NODE_ENV === "production" ? process.env.REDIS_URL : {};
+  const link = await createConfirmEmailLink(
+    userId,
+    url,
+    new Redis(redisConfig)
+  );
 
   if (email !== null) {
     await sendConfirmEmailLink(link, email);

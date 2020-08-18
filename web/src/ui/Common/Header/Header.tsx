@@ -37,7 +37,10 @@ const Header = ({ mylist }: Props) => {
     >
       <NavLink to="/browse">
         <div className="logo">
-          <img src={process.env.PUBLIC_URL + "/hotflix.png"} />
+          <img
+            src={process.env.PUBLIC_URL + "/hotflix.png"}
+            alt="hotflix-logo"
+          />
         </div>
       </NavLink>
       <div className="navigation-primary-wrapper">
@@ -68,7 +71,7 @@ const Header = ({ mylist }: Props) => {
         </span>
         <div className="avatar-wrapper">
           <div className="avatar-container">
-            <img src={process.env.PUBLIC_URL + "/avatar.png"} />
+            <img src={process.env.PUBLIC_URL + "/avatar.png"} alt="avatar" />
             <span className="caret-1"></span>
           </div>
           <div className="drop-down">

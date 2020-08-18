@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import Card from "../Card/Card";
+import "./CardContainer.scss";
 
 interface Cards {
   category: string;
@@ -12,9 +13,9 @@ interface Props {
 
 const CardContainer: FunctionComponent<Props> = ({ cards }: Props) => {
   return (
-    <div>
-      {cards.map((card) => (
-        <Card category={card.category} text={card.text} />
+    <div className="contents-wrapper">
+      {cards.map((card, key) => (
+        <Card key={key} category={card.category} text={card.text} />
       ))}
     </div>
   );

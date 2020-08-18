@@ -6,7 +6,8 @@ import {
   movies,
   new_movies,
   tv_genre,
-  get_movies,
+  //get_movies,
+  get_show,
 } from ".";
 
 const fetch = async (api, query?) => {
@@ -33,7 +34,8 @@ export const resolvers = {
     movies: () => fetch(movies),
     new_movies: () => fetch(new_movies),
     tv_genre: (_, { id }) => fetch(tv_genre, id),
-    get_movies: (_, { id }) => fetch(get_movies, id),
+    //get_movies: (_, { id }) => fetch(get_movies, id),
+    get_show: (_, { name }) => fetch(get_show, name),
   },
   Mutation: {
     search: (_, { query }) => fetch(search, query),

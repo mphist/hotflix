@@ -13,7 +13,6 @@ import { reducer, initialState } from "./context";
 
 const Root = () => {
   const [{ email }, dispatch] = useReducer(reducer, initialState);
-  console.log("Root user", email);
   return (
     <div>
       <ApolloProvider client={client}>

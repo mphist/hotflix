@@ -21,7 +21,8 @@ export const typeDefs = gql`
     new_movies: [Results]
     new_tv: [Results]
     tv_genre(id: Int): [Results]
-    get_movies(id: Int): Results
+    #get_movies(id: Int): Results
+    get_show(name: String): [Results]
   }
   type Mutation {
     search(query: String!): [Results]

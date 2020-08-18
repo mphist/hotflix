@@ -27,8 +27,24 @@ const RedisStore = connectRedis(session);
 const redisConfig =
   process.env.NODE_ENV === "production" ? process.env.REDIS_URL : {};
 const redis = new Redis(redisConfig);
-startSession(app, redis, RedisStore);
+//startSession(app, redis, RedisStore);
 
+app.set("trust proxy", 1);
+app.use(
+  session({
+    store: new RedisStore({ client: redis }),
+    name: "sid",
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 1000 * 60 * 60 * 24, // a day
+      sameSite: process.env.NODE === "production" ? "none" : "lax", // required by Chrome for CORS
+    },
+  })
+);
 // start Apollo GraphQL server and establish TypeORM connection
 startServer(app, schemas);
 
@@ -41,8 +57,8 @@ const host =
     : process.env.GRAPHQL_HOST_DEV;
 
 app.get("/", (req, res) => {
+  console.log("session", req.session);
   if (req.session.userId) {
-    console.log(req.session.userId);
     return res
       .status(200)
       .send({ login: true, id: req.session.userId, email: req.session.email });
@@ -81,7 +97,7 @@ app.post("/register", async (req, res) => {
   const { email, phone, password1 } = req.body;
   const response = await request(host, mutation(email, phone, password1));
   if (response) {
-    console.log(response.register[0]);
+    //console.log(response.register[0]);
     const host =
       process.env.NODE_ENV === "production"
         ? process.env.BACKEND_HOST_PROD + "/login"
@@ -134,9 +150,9 @@ app.post("/login", async (req, res) => {
 
   if (userId) {
     // login successful
-    console.log("Login successful");
     req.session.userId = userId;
     req.session.email = email;
+    console.log("session after login", req.session);
     //res.redirect("http://localhost:3000/browse"); // cors issue
     return res.send({
       redirectUrl:
@@ -170,9 +186,9 @@ app.post("/add_to_mylist", async (req, res) => {
   const mutation = (
     email: string,
     show_id: number,
-    show_name: string
+    show_title: string
   ) => `mutation {
-   add_to_mylist(email: "${email}", show_id: ${show_id}, show_name: "${show_name}") {
+   add_to_mylist(email: "${email}", show_id: ${show_id}, show_title: "${show_title}") {
      message
    }
  }`;
@@ -186,20 +202,27 @@ app.post("/add_to_mylist", async (req, res) => {
 
 app.post("/get_mylist", async (req, res) => {
   const { email } = req.body;
+  console.log("email", email);
   const query = (email: string) => `{
-      get_mylist(email: "${email}") {
-        show_id
-        show_name
-        poster_path
-      }
-    }`;
-  const response = await axios.post(
-    host,
-    {
-      query: query(email),
-    },
-    { withCredentials: true }
-  );
-  console.log("FINAL", response.data.data.get_mylist);
-  res.status(200).send(response.data.data.get_mylist);
+    get_mylist(email: "test@test.test") {
+      id
+      title
+      poster_path
+      original_name
+      original_title
+    }
+  }`;
+
+  try {
+    const response = await axios.post(
+      host,
+      {
+        query: query(email),
+      },
+      { withCredentials: true }
+    );
+    res.status(200).send(response.data.data.get_mylist);
+  } catch (err) {
+    console.log("Error fetching get_mylist", err);
+  }
 });

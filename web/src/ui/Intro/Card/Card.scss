@@ -184,7 +184,7 @@
   }
 }
 
-@media screen and (min-width: 951px) {
+@media screen and (min-width: 951px) and (max-width: 1199px) {
   .card-wrapper {
     min-width: 290px;
     padding: 0;
@@ -201,6 +201,9 @@
         text-align: start;
         position: relative;
         z-index: 2;
+        width: 550px;
+        max-width: 550px;
+
         h1 {
           color: #fff;
           font-size: 45px;
@@ -217,8 +220,89 @@
       .card-animation {
         position: relative;
 
-        width: 80%;
-        margin: 0 auto;
+        width: 500px;
+        max-width: 500px;
+        margin: 20px auto;
+        .card-image-1,
+        .card-image-3 {
+          img {
+            width: 100%;
+            z-index: 1;
+            position: relative;
+          }
+        }
+        .card-video-1 {
+          width: 100%;
+          height: 100%;
+          max-width: 73%;
+          max-height: 54%;
+          margin: 0 auto;
+          position: absolute;
+          top: 21%;
+          left: 13%;
+          video {
+            height: 100%;
+            width: 100%;
+          }
+        }
+        .card-video-3 {
+          width: 100%;
+          height: 100%;
+          max-width: 61%;
+          max-height: 54%;
+          margin: 0 auto;
+          position: absolute;
+          top: 11%;
+          left: 19%;
+          video {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card-wrapper {
+    min-width: 290px;
+    padding: 0;
+    position: relative;
+    top: -100px;
+    border-bottom: 8px solid #222;
+    height: 100%;
+    .card-container {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      .card-text {
+        text-align: start;
+        position: relative;
+        z-index: 2;
+        width: 550px;
+        max-width: 550px;
+
+        h1 {
+          color: #fff;
+          font-size: 45px;
+          margin: 0 auto;
+          padding-top: 50px;
+          padding-left: 38px;
+        }
+        h3 {
+          color: #fff;
+          font-size: 20px;
+          padding: 18px 40px;
+        }
+      }
+      .card-animation {
+        position: relative;
+
+        width: 500px;
+        max-width: 500px;
+        margin: 20px auto;
         .card-image-1,
         .card-image-3 {
           img {

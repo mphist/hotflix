@@ -59,6 +59,7 @@ const Card: FunctionComponent<Props> = (props: Props) => {
       : process.env.REACT_APP_BACKEND_HOST_DEV;
 
   const handleAddToList = async (id: number, title: string) => {
+    console.log("title", title);
     try {
       const response = await axios.get(host as string, {
         withCredentials: true,
@@ -91,6 +92,7 @@ const Card: FunctionComponent<Props> = (props: Props) => {
                   <img
                     className="image"
                     src={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
+                    alt={""}
                   />
 
                   <div className="add-to-list-btn">
@@ -105,7 +107,14 @@ const Card: FunctionComponent<Props> = (props: Props) => {
                       y="0px"
                       viewBox="0 0 512 512"
                       fill="white"
-                      onClick={() => handleAddToList(show.id, show.title)}
+                      onClick={() =>
+                        handleAddToList(
+                          show.id,
+                          show.title ||
+                            show.original_name ||
+                            show.original_title
+                        )
+                      }
                     >
                       <g>
                         <g>

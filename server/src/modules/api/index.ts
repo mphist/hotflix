@@ -9,8 +9,8 @@ const MOVIES_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY
 const NEW_MOVIES_URL = `
 https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`;
 const TV_GENRE_URL = `https://api.themoviedb.org/3/tv`;
-const GET_MOVIES_URL = `https://api.themoviedb.org/3/movie`;
-
+//const GET_MOVIES_URL = `https://api.themoviedb.org/3/movie`;
+const GET_SHOW_URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US`;
 export const discover = async (id) =>
   await fetch(DISCOVER_URL + `&with_genres=${id}`).then((res) => res.json());
 
@@ -36,12 +36,12 @@ export const tv_genre = async (id) =>
       `/similar?api_key=${API_KEY}&language=en-US&page=1`
   ).then((res) => res.json());
 
-export const get_movies = async (id) => {
-  return await fetch(
-    GET_MOVIES_URL + `/${id}` + `?api_key=${API_KEY}&language=en-US`
+export const get_show = async (name) =>
+  await fetch(
+    //GET_MOVIES_URL + `/${id}` + `?api_key=${API_KEY}&language=en-US`
+    GET_SHOW_URL + `&query=${name}`
   ).then((res) => res.json());
-  //const result = response.json();
-  /* const movie = [{ id: result.id, title: result.title }];
+//const result = response.json();
+/* const movie = [{ id: result.id, title: result.title }];
   console.log("movie fetched", movie); */
-  //return response;
-};
+//return response;

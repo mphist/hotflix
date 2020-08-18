@@ -15,12 +15,13 @@ const MyList: React.FunctionComponent = () => {
         withCredentials: true,
       });
       const { email } = response.data;
-      console.log("email", email);
+      // console.log("email", email);
       const response2 = await axios.post(
         host + "/get_mylist",
         { email },
         { withCredentials: true }
       );
+      console.log("response2", response2);
       const shows = response2.data;
       setShows(shows);
     };
@@ -28,9 +29,12 @@ const MyList: React.FunctionComponent = () => {
   }, []);
 
   const displayList = () => {
-    const result = shows.map((show: any) => (
-      <div className="show-container" key={show.show_id}>
-        <img src={"https://image.tmdb.org/t/p/w500" + show.poster_path} />
+    const result = shows.map((show: any, key) => (
+      <div className="show-container" key={key}>
+        <img
+          src={"https://image.tmdb.org/t/p/w500" + show.poster_path}
+          alt=""
+        />
       </div>
     ));
     return result;

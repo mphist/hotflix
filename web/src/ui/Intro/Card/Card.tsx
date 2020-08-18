@@ -25,7 +25,7 @@ const Card: React.FunctionComponent<Props> = ({
         </div>
         <div className="card-animation">
           <div className={`card-image-${number}`}>
-            <img src={process.env.PUBLIC_URL + image} />
+            <img src={process.env.PUBLIC_URL + image} alt="animation-frame" />
           </div>
           <div className={`card-video-${number}`}>
             <video autoPlay loop playsInline muted>

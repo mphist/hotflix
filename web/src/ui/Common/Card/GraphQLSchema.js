@@ -7,6 +7,8 @@ export const TRENDING = gql`
       title
       poster_path
       release_date
+      original_name
+      original_title
     }
   }
 `;
@@ -15,9 +17,11 @@ export const TV = gql`
   {
     results: tv {
       id
-      original_name
+      title
       poster_path
       release_date
+      original_name
+      original_title
     }
   }
 `;
@@ -26,9 +30,11 @@ export const MOVIES = gql`
   {
     results: movies {
       id
-      original_title
+      title
       poster_path
       release_date
+      original_name
+      original_title
     }
   }
 `;
@@ -37,9 +43,11 @@ export const ANIMATION = gql`
   {
     results: discover(id: 16) {
       id
-      original_title
+      title
       poster_path
       release_date
+      original_name
+      original_title
     }
   }
 `;
@@ -48,9 +56,11 @@ export const NEW_MOVIES = gql`
   {
     results: new_movies {
       id
-      original_title
+      title
       poster_path
       release_date
+      original_name
+      original_title
     }
   }
 `;

@@ -5,7 +5,8 @@
 /server/build
 /web/build
 /web/.env
-deploy.sh
+deploy-server.sh
+rdi.sh
 Dockerfile
 /web/.netlify
 # Local Netlify folder

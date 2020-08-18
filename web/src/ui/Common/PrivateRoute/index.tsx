@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Route, RouteProps, Redirect, useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useContext } from "react";
+import { Route, RouteProps, useHistory } from "react-router-dom";
 import { Login, Home } from "../..";
 import Header from "../Header/Header";
 import { AuthContext } from "../Context/auth";

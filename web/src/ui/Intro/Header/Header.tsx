@@ -12,7 +12,11 @@ const Header = ({ login }: PropTypes) => {
     return (
       <div className="header-wrapper">
         <div className="logo-container">
-          <img className="logo" src={process.env.PUBLIC_URL + "/hotflix.png"} />
+          <img
+            className="logo"
+            src={process.env.PUBLIC_URL + "/hotflix.png"}
+            alt="hotflix-logo"
+          />
         </div>
         <div className="login-btn">
           <Link to="/login">
@@ -25,7 +29,11 @@ const Header = ({ login }: PropTypes) => {
     return (
       <div className="header-wrapper">
         <div className="logo-container">
-          <img className="logo" src={process.env.PUBLIC_URL + "/hotflix.png"} />
+          <img
+            className="logo"
+            src={process.env.PUBLIC_URL + "/hotflix.png"}
+            alt="hotflix-logo"
+          />
         </div>
       </div>
     );

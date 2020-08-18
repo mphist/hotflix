@@ -3,6 +3,7 @@ import { mergeSchemas } from "graphql-tools";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import { createTypeOrmConn } from "./createTypeOrmConn";
+import { nudgeDyno } from "./nudgeDyno";
 
 export const startServer = async (
   app: express.Express,
@@ -37,9 +38,12 @@ export const startServer = async (
   server.applyMiddleware({ app, cors });
 
   await createTypeOrmConn();
-  app.listen(process.env.PORT || 4000, () =>
+  app.listen(process.env.PORT || 4000, () => {
+    if (process.env.NODE_ENV === "production") {
+      nudgeDyno(); // keep dyno awake
+    }
     console.log(
       `🚀 Server ready at ${process.env.PORT || 4000}${server.graphqlPath}`
-    )
-  );
+    );
+  });
 };

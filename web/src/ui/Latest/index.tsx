@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../Common/Header/Header";
 import Billboard from "../Common/Billboard/Billboard";
 import CardContainer from "../Common/CardContainer/CardContainer";
 
