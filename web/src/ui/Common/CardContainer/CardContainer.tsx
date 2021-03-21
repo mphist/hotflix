@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import Card from "../Card/Card";
 import "./CardContainer.scss";
 
@@ -12,6 +12,14 @@ interface Props {
 }
 
 const CardContainer: FunctionComponent<Props> = ({ cards }: Props) => {
+  const [load, setLoad] = useState(false);
+  setTimeout(() => {
+    setLoad(true);
+  }, 500);
+
+  if (!load) {
+    return <div className="contents-wrapper"></div>;
+  }
   return (
     <div className="contents-wrapper">
       {cards.map((card, key) => (

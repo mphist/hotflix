@@ -25,7 +25,7 @@
         div {
           //width: 100%;
           .add-to-list-btn {
-            display: none;
+            visibility: hidden;
             .add-btn {
               width: 30px;
               position: relative;
@@ -52,9 +52,10 @@
         }
 
         .add-to-list-btn {
-          display: inline;
+          visibility: visible;
+          //display: inline;
           .add-text-container {
-            display: none;
+            //display: none;
           }
           .add-btn {
             cursor: pointer;
