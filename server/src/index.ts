@@ -41,7 +41,7 @@ app.use(
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       maxAge: 1000 * 60 * 60 * 24, // a day
-      sameSite: process.env.NODE === "production" ? "none" : "lax", // required by Chrome for CORS
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // required by Chrome for CORS
     },
   })
 );
